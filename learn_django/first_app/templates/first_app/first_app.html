@@ -5,5 +5,22 @@ All chai page
 {% endblock %}
 
 {% block content %}
-<h1 class="text-red-900">All chai page</h1>
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-red-900 mb-8">All chai page</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {% for chai in chais %}
+        <a href="{% url 'chai_detail' chai.id %}" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow group">
+            <img src="{{ chai.image.url }}" alt="{{ chai.name }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">{{ chai.name }}</h3>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full font-medium">{{ chai.get_type_display }}</span>
+                    <span class="text-gray-500 font-mono">#{{ chai.id }}</span>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
