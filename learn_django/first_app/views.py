@@ -13,3 +13,6 @@ def all_chai(request):
 def chai_detail(request, chai_id):
     chai = get_object_or_404(Chaia_Variety,pk=chai_id)
     return render(request, "first_app/chai_detail.html",{'chai':chai})
+
+def chai_stores(request):
+    return render(request, "first_app/chai_stores.html")
